@@ -15,17 +15,17 @@ Citizen.CreateThread(function()
 			currentPos = GetEntityCoords(playerPed, true)
 			if currentPos == prevPos and not IsEntityDead(playerPed) then
 				if time > 0 then
-					if time == math.ceil(kicktime / 5) then
-						ShowInfo("You will be kicked in " .. time .. " seconds")
+					if time == math.ceil(kicktime/60 / 5) then
+						ShowInfo("You will be kicked in " .. time .. " minutes")
 					end
-					if time == math.ceil(kicktime / 4) then
-						ShowInfo("You will be kicked in " .. time .. " seconds")
+					if time == math.ceil(kicktime/60 / 4) then
+						ShowInfo("You will be kicked in " .. time .. " minutes")
 					end
-					if time == math.ceil(kicktime / 3) then
-						ShowInfo("You will be kicked in " .. time .. " seconds")
+					if time == math.ceil(kicktime/60 / 3) then
+						ShowInfo("You will be kicked in " .. time .. " minutes")
 					end
-					if time == math.ceil(kicktime / 2) then
-						ShowInfo("You will be kicked in " .. time .. " seconds")
+					if time == math.ceil(kicktime/60 / 2) then
+						ShowInfo("You will be kicked in " .. time .. " minutes")
 					end
 					time = time - 1
 				else
