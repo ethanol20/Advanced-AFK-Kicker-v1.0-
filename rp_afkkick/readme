@@ -1,0 +1,8 @@
+INSTALLATION!
+
+make sure to download and setup InteractSound as this is needed for the AI voice. Make sure to name the folder InteractSound
+https://github.com/plunkettscott/interact-sound
+
+Download this resource and place the afk.ogg in the InteractSound/client/html/sounds folder
+
+And then add this resource to your server as you would like any other.
