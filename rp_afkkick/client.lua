@@ -4,7 +4,7 @@
 -- https://discord.gg/SQXvn5a
 
 
-local kicktime = 600 --(IN SECONDS)
+local kicktime = 10 --(IN SECONDS)
 local voice = false
 
 Citizen.CreateThread(function()	
@@ -15,17 +15,18 @@ Citizen.CreateThread(function()
 			currentPos = GetEntityCoords(playerPed, true)
 			if currentPos == prevPos and not IsEntityDead(playerPed) then
 				if time > 0 then
-					if time == math.ceil(kicktime/60 / 5) then
-						ShowInfo("You will be kicked in " .. time .. " minutes")
+					if time == math.ceil(kicktime / 2) then
+						ShowInfo("You will be kicked in " .. math.modf(time/60) .. " minute/s")
 					end
-					if time == math.ceil(kicktime/60 / 4) then
-						ShowInfo("You will be kicked in " .. time .. " minutes")
+					if time == math.ceil(kicktime / 3) then
+						ShowInfo("You will be kicked in " .. math.modf(time/60) .. " minute/s")
 					end
-					if time == math.ceil(kicktime/60 / 3) then
-						ShowInfo("You will be kicked in " .. time .. " minutes")
+					if time == math.ceil(kicktime / 5) then
+						ShowInfo("You will be kicked in " .. math.modf(time/60) .. " minute/s")
+						TriggerServerEvent('InteractSound_SV:PlayOnSource', 'afk', 0.8)
 					end
-					if time == math.ceil(kicktime/60 / 2) then
-						ShowInfo("You will be kicked in " .. time .. " minutes")
+					if time == math.ceil(kicktime / 15) then
+						ShowInfo("You will be kicked in " .. math.modf(time) .. " seconds")
 					end
 					time = time - 1
 				else
@@ -33,9 +34,6 @@ Citizen.CreateThread(function()
 				end
 			else
 				time = kicktime
-			end
-			if time == math.ceil(kicktime / 5) then
-				TriggerServerEvent('InteractSound_SV:PlayOnAll', 'afk', 0.8)
 			end
 			prevPos = currentPos
 		end
