@@ -16,17 +16,19 @@ Citizen.CreateThread(function()
 			if currentPos == prevPos and not IsEntityDead(playerPed) then
 				if time > 0 then
 					if time == math.ceil(kicktime / 2) then
-						ShowInfo("You will be kicked in " .. math.modf(time/60) .. " minute/s")
+						afkinfo("You will be kicked in " .. math.modf(time/60) .. " minute/s")
 					end
 					if time == math.ceil(kicktime / 3) then
-						ShowInfo("You will be kicked in " .. math.modf(time/60) .. " minute/s")
+						afkinfo("You will be kicked in " .. math.modf(time/60) .. " minute/s")
 					end
 					if time == math.ceil(kicktime / 5) then
-						ShowInfo("You will be kicked in " .. math.modf(time/60) .. " minute/s")
+						afkinfo("You will be kicked in " .. math.modf(time/60) .. " minute/s")
+						if Config.voice == true then 
 						TriggerServerEvent('InteractSound_SV:PlayOnSource', 'afk', 0.8)
+						end
 					end
 					if time == math.ceil(kicktime / 15) then
-						ShowInfo("You will be kicked in " .. math.modf(time) .. " seconds")
+						afkinfo("You will be kicked in " .. math.modf(time) .. " seconds")
 					end
 					time = time - 1
 				else
@@ -40,9 +42,9 @@ Citizen.CreateThread(function()
 	end
 end)
 
-function ShowInfo(text)
+function afkinfo(text)
     SetNotificationTextEntry("STRING");
     AddTextComponentString(text);
-	SetNotificationMessage('CHAR_FLOYD', 'AFK', true, 1, '[Project X] AFK KICK');
-	DrawNotification(false, false)
+    SetNotificationMessage('CHAR_FLOYD', 'AFK', true, 1, '[Project X] AFK KICK');
+    DrawNotification(false, false)
 end 
