@@ -11,10 +11,10 @@ local loggedalready = false -- Set this to true if you have a script that handle
 RegisterNetEvent('afk:kick')
 AddEventHandler('afk:kick', function(player)
     local name = GetPlayerName(source)
-    if loggedalready == false and not IsPlayerAceAllowed(source, 'afk:immune') then
+    if Config.loggedalready == false and not IsPlayerAceAllowed(source, 'afk:immune') then
         DropPlayer(source, reason)
         DiscordWebHook(name, reason, color)
-    elseif loggedalready == true and not IsPlayerAceAllowed(source, 'afk:immune') then
+    elseif Config.loggedalready == true and not IsPlayerAceAllowed(source, 'afk:immune') then
         DropPlayer(source, reason)
     end
 end)
@@ -30,5 +30,5 @@ function DiscordWebHook(name, message, color)
               },
           }
       }
-    PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = GetPlayerName(source), embeds = connect}), { ['Content-Type'] = 'application/json' })
-  end
+    PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({username = name, embeds = connect}), { ['Content-Type'] = 'application/json' })
+end
